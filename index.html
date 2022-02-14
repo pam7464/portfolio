@@ -15,11 +15,12 @@
         /* 폰트 */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
         :root{
+            scroll-behavior:smooth;
             width:100%;            
             font-family:'Montserrat','Noto Sans KR',sans-serif;
             font-weight:400;
             font-size:14px;
-            color:#eee;
+            color:#fff;
             line-height:1em;
         }
         .container{
@@ -154,15 +155,56 @@
             right:0;
         }
         #main-nav li{
-            padding:1em;
+            margin:0.8em;
+            border-bottom:1px solid transparent; 
+            padding:12px;
             font-weight:600;
             font-size:2em;
             text-transform:uppercase;
-        }        
+            position:relative;
+            transition:border 0.3s;
+        }     
         #main-nav li:hover{
-            transform:scale(1.5);            
+            border-bottom-color:#fff;
         }
-
+        #main-nav li a{
+            position:relative;
+            z-index:100;
+        }                   
+        #main-nav li::before{
+            content:attr(data-after);
+            display:block;            
+        
+            position:absolute;           
+            top:50%;
+            z-index:99;
+            transform:translateY(-50%) scale(1);
+            opacity:1;
+        }
+        #main-nav li:hover::before{
+            animation-name:nav-ani01;  
+            animation-duration:0.3s;
+        }
+        @keyframes nav-ani01{
+            0%{
+                transform:translateY(-50%) scale(1);
+                opacity:1; 
+                display:none;           
+            }
+            1%{
+                display:block;
+            }
+            99%{
+                transform:translateY(-50%) scale(20);
+                opacity:0;
+            }
+            100%{
+                display:none;
+            }
+            
+        }
+        
+       
 
         .sec{
             height:100vh;
@@ -190,10 +232,12 @@
             }
             #main-nav li {               
                 font-weight: 500;
-                font-size: 1.5em;                
+                font-size: 1.5em;
             }
-            #main-nav li:hover{
-                transform:scale(1.2);
+           
+            
+            #main-nav li:hover::before{
+                animation-name:none;
             }
         }
 
@@ -233,11 +277,11 @@
                             <div class="line">라인</div>
                         </div>
                         <ul id="main-nav">
-                            <li><a href="#home">home</a></li>
-                            <li><a href="#about">about us</a></li>
-                            <li><a href="#skills">my skills</a></li>
-                            <li><a href="#projects">projects</a></li>
-                            <li><a href="#contact">contact me</a></li>
+                            <li data-after="home"><a href="#home">home</a></li>
+                            <li data-after="about us"><a href="#about">about us</a></li>
+                            <li data-after="my skills"><a href="#skills">my skills</a></li>
+                            <li data-after="projects"><a href="#projects">projects</a></li>
+                            <li data-after="contact me"><a href="#contact">contact me</a></li>
                         </ul>
                     </nav>
                 </div>
