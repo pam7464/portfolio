@@ -90,7 +90,7 @@
         <a href="#contact">contact me</a>
     </section>
     <!-- 팝업  -->
-    <section class="popup-cookie" id="popup-cookie">
+    <section class="popup-cookie dis-none" id="popup-cookie">
         <div class="in">
             <div class="img-box">
                 <img src="./images/popup.jpg" alt="팝업이미지">
@@ -155,34 +155,37 @@
         let popupEl = document.getElementById('popup-cookie');
         let chk01 = document.getElementById('chk01');
         let btnPopup = document.getElementById('btn-popup');
-        console.log(popupEl,chk01,btnPopup);
 
         // 팝업닫기 이벤트
         btnPopup.addEventListener('click',()=>{
             popupEl.classList.add('dis-none');
             if(chk01.checked){
                 setCookie('mainPopup','hidden',1);
-            }else{
-                setCookie('mainPopup','show',1);
             }
         });
+        // 팝업실행여부
+        popup();
 
-        
-        // set 쿠키만들기
-        function setCookie(name,value,expir){
-            let date = new Date();
-            date.setDate(date.getDate() + expir);
-            document.cookie = name + '=' + value + ';expires=' + date +';path=/;';
-            document.cookie = name + '01' + '=' + value + ';expires=' + date +';path=/;';
-            
-        }
-       
-        // get 쿠키만들기
-        function getCookie(cookie_name) { 
-            let value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-            return value? value[2] : null;
-        }
 
+
+        // FUNCTION
+            // 팝업 보이기/감추기
+            function popup(){
+                if(getCookie('mainPopup')!=='hidden'){
+                    popupEl.classList.remove('dis-none');
+                }
+            }
+            // set 쿠키만들기
+            function setCookie(name,value,expir){
+                let date = new Date();
+                date.setDate(date.getDate() + expir);
+                document.cookie = name + '=' + value + ';expires=' + date +';path=/;';
+            }
+            // get 쿠키만들기
+            function getCookie(name) { 
+                let value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+                return value? value[2] : null;
+            }
 
     </script>
 </body>
