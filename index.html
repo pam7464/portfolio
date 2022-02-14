@@ -23,6 +23,11 @@
             color:#fff;
             line-height:1em;
         }
+        .sec{
+            height:100vh;
+            padding-top:140px;
+            
+        }
         .container{
             width:100%;
             max-width:1960px;
@@ -32,6 +37,7 @@
         h2{
             font-weight:500;
             font-size:2em;
+            text-transform:uppercase;
         }
 
 
@@ -99,7 +105,7 @@
             transition:0.3s;
         }
         .header.lock{
-            background-color:#333;
+            background-color:#222;
         }
 
         .header .in{
@@ -125,12 +131,34 @@
             border-radius:4px; 
             cursor:pointer;           
         }
+        .btn-nav::before{
+            box-sizing:border;
+            content:'';
+            display:block;
+
+            position:absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+ 
+            border:2px solid #fff; 
+            animation-name:btn-nav-ani;
+            animation-duration:1s;           
+            animation-iteration-count:infinite;
+        }
         .btn-nav .line{
             width:20px;
             height:2px;
             margin-bottom:5px;
             background-color:#eee;
             text-indent:-99999px;
+        }
+        .btn-nav.close .line{
+            visibility:hidden;            
+        }
+        .btn-nav.close .line:nth-child(2){
+            visibility:visible;            
         }
         .btn-nav .line:last-child{
             margin-bottom:0;
@@ -142,7 +170,7 @@
             top:0;
             bottom:0;
             z-index:9996;
-            background-color:#333;
+            background-color:#222;
             transition:0.3s;
 
             display:flex;
@@ -203,15 +231,45 @@
             }
             
         }
+        @keyframes btn-nav-ani {
+            0%{
+                opacity:0;
+                transform:scale(1.2);
+            }
+            10%{
+                opacity:0;
+                transform:scale(1.2);
+            }
+            11%{
+                opacity:1;
+                transform:scale(1.2);
+            }
+            100%{
+                opacity:0;
+                transform:scale(1.7);
+            }
+        }
+
+        .intro{
+            position: relative;
+        }
+        .intro::before{
+            content:'';
+            display:block;
+            position:absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+
+            background:url(./images/bg-intro.jpg) no-repeat center;
+            background-size:cover;
+            filter:brightness(50px);
+        }
         
        
 
-        .sec{
-            height:100vh;
-            padding-top:90px;
-            background-color:#666;
-        }
-
+        
 
 
 
@@ -230,7 +288,9 @@
 
                 flex-direction:row;
             }
-            #main-nav li {               
+            #main-nav li {       
+                margin-top:0;
+                margin-bottom:0;        
                 font-weight: 500;
                 font-size: 1.5em;
             }
@@ -277,7 +337,7 @@
                             <div class="line">라인</div>
                         </div>
                         <ul id="main-nav">
-                            <li data-after="home"><a href="#home">home</a></li>
+                            <li data-after="home"><a href="#intro">home</a></li>
                             <li data-after="about us"><a href="#about">about us</a></li>
                             <li data-after="my skills"><a href="#skills">my skills</a></li>
                             <li data-after="projects"><a href="#projects">projects</a></li>
@@ -287,6 +347,11 @@
                 </div>
             </div>
         </header>
+        <section class="sec intro" id="intro">
+            <div class="container">
+                <h2>intro</h2>
+            </div>
+        </section>
         <section class="sec about-me" id="about">
             <div class="container">
                 <h2>about</h2>
@@ -334,10 +399,13 @@
         });
         // 팝업실행여부
         popup();
+        
         // 내비게이션 토글이벤트
         tglNav.addEventListener('click',()=>{
             showNav(mainNavEl);
-        })
+            tglNav.classList.toggle('close');
+        });
+
         // 문서에서 특정 타겟으로 이동
         for(let idx=0;idx<navEls.length;idx++){
             navEls[idx].addEventListener('click',()=>{
