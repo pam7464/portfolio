@@ -20,8 +20,18 @@
             font-family:'Montserrat','Noto Sans KR',sans-serif;
             font-weight:400;
             font-size:14px;
-            color:#333;
+            color:#eee;
             line-height:1em;
+        }
+        .container{
+            width:100%;
+            max-width:1200px;
+            margin:0 auto;
+            padding:0 20px;
+        }
+        h2{
+            font-weight:500;
+            font-size:2em;
         }
 
 
@@ -77,7 +87,67 @@
             width:100%;
             margin-bottom:1em;
         }
-        
+
+        /* HEADER */
+        .header{
+            padding:20px 0;
+        }
+        .header .in{
+            display:flex;
+            flex-flow:row nowrap;
+            justify-content: space-between;
+            align-items:center;
+        }
+        h1{
+            border:3px solid #eee;
+            padding:15px;
+
+            font-weight:600;
+            font-size:2em;
+            text-transform:uppercase;
+        }
+        .btn-nav{
+            position:relative;
+            z-index:9997;
+
+            border:2px solid #eee;
+            padding:6px;
+            border-radius:4px; 
+            cursor:pointer;           
+        }
+        .btn-nav .line{
+            width:20px;
+            height:2px;
+            margin-bottom:5px;
+            background-color:#eee;
+            text-indent:-99999px;
+        }
+        .btn-nav .line:last-child{
+            margin-bottom:0;
+        }
+        #main-nav{            
+            position:fixed;
+            left:100%;
+            right:-100%;
+            top:0;
+            bottom:0;
+            z-index:9996;
+            background-color:#333;
+            transition:0.3s;
+
+            display:flex;
+            flex-flow:column nowrap;
+            justify-content:center;
+            align-items:center;
+        }
+        #main-nav.active{
+            left:0;
+            right:0;
+        }
+        #main-nav li{
+            
+        }
+
     </style>
 </head>
 <body>
@@ -106,14 +176,14 @@
         <header class="header" id="home">
             <div class="container">
                 <div class="in">
-                    <h1><a href="./index.html">cho hwanjoon</a></h1>
+                    <h1><a href="./index.html" title="클릭하면 시작페이지로 이동">cho hwanjoon</a></h1>
                     <nav>
-                        <div class="btn-nav">
+                        <div class="btn-nav" id="tlg-nav" title="클릭하면 내비보임">
                             <div class="line">라인</div>
                             <div class="line">라인</div>
                             <div class="line">라인</div>
                         </div>
-                        <ul>
+                        <ul id="main-nav">
                             <li><a href="#home">home</a></li>
                             <li><a href="#about">about us</a></li>
                             <li><a href="#skills">my skills</a></li>
@@ -152,9 +222,13 @@
     </section>
 
     <script>
+        // 전역변수
         let popupEl = document.getElementById('popup-cookie');
         let chk01 = document.getElementById('chk01');
         let btnPopup = document.getElementById('btn-popup');
+        let tglNav = document.getElementById('tlg-nav');
+        let mainNavEl = document.getElementById('main-nav');
+        
 
         // 팝업닫기 이벤트
         btnPopup.addEventListener('click',()=>{
@@ -166,26 +240,35 @@
         // 팝업실행여부
         popup();
 
+        tglNav.addEventListener('click',()=>{
+            showNav(mainNavEl);
+        })
 
 
         // FUNCTION
-            // 팝업 보이기/감추기
+            // 팝업 보이기/감추기 함수
             function popup(){
                 if(getCookie('mainPopup')!=='hidden'){
                     popupEl.classList.remove('dis-none');
                 }
             }
-            // set 쿠키만들기
+            // set 쿠키만들기 함수
             function setCookie(name,value,expir){
                 let date = new Date();
                 date.setDate(date.getDate() + expir);
                 document.cookie = name + '=' + value + ';expires=' + date +';path=/;';
             }
-            // get 쿠키만들기
+            // get 쿠키만들기 함수
             function getCookie(name) { 
                 let value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
                 return value? value[2] : null;
             }
+            
+            // target 토글 함수
+            function showNav(target){
+                target.classList.toggle('active');
+            }
+           
 
     </script>
 </body>
