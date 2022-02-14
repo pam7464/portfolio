@@ -15,8 +15,7 @@
         /* 폰트 */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
         :root{
-            width:100%;
-            overflow:hidden;
+            width:100%;            
             font-family:'Montserrat','Noto Sans KR',sans-serif;
             font-weight:400;
             font-size:14px;
@@ -25,7 +24,7 @@
         }
         .container{
             width:100%;
-            max-width:1200px;
+            max-width:1960px;
             margin:0 auto;
             padding:0 20px;
         }
@@ -91,7 +90,17 @@
         /* HEADER */
         .header{
             padding:20px 0;
+            position:fixed;
+            left:0;
+            right:0;
+            top:0;
+            background-color:transparent;
+            transition:0.3s;
         }
+        .header.lock{
+            background-color:#333;
+        }
+
         .header .in{
             display:flex;
             flex-flow:row nowrap;
@@ -145,7 +154,47 @@
             right:0;
         }
         #main-nav li{
-            
+            padding:1em;
+            font-weight:600;
+            font-size:2em;
+            text-transform:uppercase;
+        }        
+        #main-nav li:hover{
+            transform:scale(1.5);            
+        }
+
+
+        .sec{
+            height:100vh;
+            padding-top:90px;
+            background-color:#666;
+        }
+
+
+
+
+
+
+
+
+
+        @media (min-width:1200px){
+            .btn-nav{
+                display:none;
+            }  
+            #main-nav{
+                position:static;
+                background-color:transparent;
+
+                flex-direction:row;
+            }
+            #main-nav li {               
+                font-weight: 500;
+                font-size: 1.5em;                
+            }
+            #main-nav li:hover{
+                transform:scale(1.2);
+            }
         }
 
     </style>
@@ -228,6 +277,8 @@
         let btnPopup = document.getElementById('btn-popup');
         let tglNav = document.getElementById('tlg-nav');
         let mainNavEl = document.getElementById('main-nav');
+        let navEls = document.querySelectorAll('#main-nav a');
+        let headerEl = document.getElementById('home');
         
 
         // 팝업닫기 이벤트
@@ -239,10 +290,23 @@
         });
         // 팝업실행여부
         popup();
-
+        // 내비게이션 토글이벤트
         tglNav.addEventListener('click',()=>{
             showNav(mainNavEl);
         })
+        // 문서에서 특정 타겟으로 이동
+        for(let idx=0;idx<navEls.length;idx++){
+            navEls[idx].addEventListener('click',()=>{
+                showNav(mainNavEl);
+            })
+        }
+        
+        // window scroll 이벤트
+        window.addEventListener('scroll',()=>{
+            let scrTop = window.scrollY;
+            bgChange(scrTop,headerEl);
+        })
+
 
 
         // FUNCTION
@@ -269,7 +333,15 @@
                 target.classList.toggle('active');
             }
            
-
+            // 배경 변경 함수
+            function bgChange(scrWidth,target){
+                if(scrWidth>0){
+                    target.classList.add('lock');
+                }else{
+                    target.classList.remove('lock');
+                }
+            }
+    
     </script>
 </body>
 </html>
