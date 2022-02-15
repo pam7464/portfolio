@@ -452,6 +452,50 @@
             font-weight:300;
             line-height:1.2;
         }
+        /* 어바웃스타일끝 */
+
+        /* 스킬스타일 */
+        .skills{           
+            background-image:url(./images/bg-intro.jpg);
+            background-repeat:no-repeat;
+            background-position:center;
+            background-size:cover;
+            background-attachment:fixed;
+        }
+        .skills h2{
+            display:none;
+        }
+        .skills .in{
+            display:flex;
+            flex-flow:column nowrap;
+            justify-content: space-between;
+            align-items:center;
+        }
+        .skills .skills-top{
+            margin-bottom:100px;
+            display:flex;
+            flex-flow:column nowrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .skills-top h3{
+            margin-bottom: 1em;
+            font-weight: 500;
+            font-size: 2em;
+            text-transform: uppercase;
+            text-align:center;
+        }
+        .skills-top p{
+            line-height:1.2;
+            text-align:center;
+        }
+        .skills-top p:first-of-type{
+            display:none;
+        }
+
+        
+
+        /* 스킬스타일끝 */
 
 
         @media (min-width:560px){
@@ -484,6 +528,29 @@
                 flex-direction:row;
             }
             /* 어바웃스타일끝 */
+
+            /* 스킬스타일 */
+            .skills .in{
+                align-items:stretch;
+            }
+            .skills .skills-top{
+                flex-direction:row;
+            }
+            .skills-top h3{
+                margin-bottom:0;
+                flex:1;
+            }
+            .skills-top p:first-of-type{
+                display:block;
+                flex:1;
+                text-align:left;
+            }
+            .skills-top p:last-of-type{
+                display:none;
+            }
+
+            /* 스킬스타일끝 */
+
 
         }  
 
@@ -575,6 +642,17 @@
                 background-attachment:fixed;
             }
             /* 어바웃스타일끝 */
+
+            /* 스킬스타일 */            
+          
+            .skills-left h3{
+                margin-bottom:30px;
+                align-self:flex-start;
+            }
+            .skills .skills-right{
+                flex:1;
+            }
+            /* 스킬스타일끝 */
 
         }
 
@@ -676,9 +754,23 @@
                 </div>
             </div>
         </section>
-        <section class="sec my-skills" id="skills">
+        <section class="sec skills" id="skills">
             <div class="container">
                 <h2>skills</h2>
+                <div class="in">
+                    <div class="skills-top skills-left">
+                        <h3>i can do</h3>
+                        <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit alias, nisi aut hic quia quam.
+                        <br>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur itaque ut a, quam harum reprehenderit suscipit aut sunt!                            
+                        </p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+                    </div>
+                    <div class="skills-bottom skills-right">
+                        아래/오른쪽
+                    </div>
+                </div>
             </div>
         </section>
         <section class="sec projects" id="projects">
