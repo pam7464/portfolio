@@ -101,6 +101,7 @@
             left:0;
             right:0;
             top:0;
+            z-index:2;
             background-color:transparent;
             transition:0.3s;
         }
@@ -252,6 +253,11 @@
 
         .intro{
             position: relative;
+            z-index:1;
+            background-image:url(./images/bg-intro.jpg);
+            background-repeat:no-repeat;
+            background-position:center;
+            background-size:cover;
         }
         .intro::before{
             content:'';
@@ -261,12 +267,107 @@
             right:0;
             top:0;
             bottom:0;
-
-            background:url(./images/bg-intro.jpg) no-repeat center;
-            background-size:cover;
-            filter:brightness(50px);
+            z-index:1;
+            background-color:rgba(0,0,0,0.5);
         }
-        
+        .intro .container{
+            position:relative;
+            z-index:2;
+            display:flex;
+            flex-flow:row nowrap;
+            justify-content:center;
+            align-items:center;
+            height:100%;
+        }
+        .intro h2{
+            display:none;
+        }
+       
+        .intro-left p{
+            line-height:2;
+            position:relative;
+            opacity:0;
+            animation-name:text-opacity;
+            animation-duration: 1s;
+            animation-timing-function: ease;
+            animation-fill-mode:forwards;
+        }
+
+        @keyframes text-opacity {
+            50%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+
+        .intro-left p:first-child{
+            font-weight:500;
+            font-size:2em;
+            animation-delay:0.25s;
+        }
+        .intro-left p:nth-child(2){
+            animation-delay:0.75s;
+        }
+        .intro-left p:nth-child(3){
+            animation-delay:1.25s;
+        }
+        .intro-left p:nth-child(4){
+            animation-delay:1.75s;
+        }
+        .intro-left p:last-child{
+            border:2px solid #fff;
+            padding:0.5em;
+            text-align:center;
+            opacity:1;
+            animation:none;
+        }
+
+
+        /* .intro-left p::after{
+            content:'';
+            display:block;
+            position:absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            background-color:rgba(255,255,255,0.3);
+            animation-name:box-width;
+            animation-duration:1s;
+            animation-timing-function:ease;
+            animation-fill-mode:forwards;
+        }
+        .intro-left p:nth-child(1)::after{            
+        }
+        .intro-left p:nth-child(2)::after{
+            animation-delay:0.5s;
+        }
+        .intro-left p:nth-child(3)::after{
+            animation-delay:1s;
+        }
+        .intro-left p:nth-child(4)::after{
+            animation-delay:1.5s
+        }
+        .intro-left p:nth-child(5)::after{
+            animation:none;
+            display:none;
+        }
+
+        @keyframes box-width {
+            50%{
+                left:0;
+            }
+            100%{
+                left:100%;
+            }
+        } */
+
+        .intro-right{
+            display:none;
+        }
+       
        
 
         
@@ -293,12 +394,23 @@
                 margin-bottom:0;        
                 font-weight: 500;
                 font-size: 1.5em;
-            }
-           
+            }           
             
             #main-nav li:hover::before{
                 animation-name:none;
             }
+
+            .intro .container{
+                justify-content: space-between;
+            }
+            .intro-left{
+                align-self:flex-end;
+            }
+            .intro-right{
+                align-self: flex-start;
+                display:block;
+            }
+
         }
 
     </style>
@@ -350,6 +462,17 @@
         <section class="sec intro" id="intro">
             <div class="container">
                 <h2>intro</h2>
+                <div class="intro-left">
+                    <p>안녕하세요!</p>  
+                    <p>성실과 열정으로 준비된 신입</p>
+                    <p>웹 퍼블시셔 & 프론트엔드 개발자</p>
+                    <p>홍길동입니다.</p>
+                    <p><a href="#projects">포트폴리오 바로가기</a></p>
+                </div>
+                <div class="intro-right">
+                    <p>port</p>
+                    <p>folio</p>
+                </div>
             </div>
         </section>
         <section class="sec about-me" id="about">
