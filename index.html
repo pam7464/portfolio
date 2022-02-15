@@ -262,6 +262,7 @@
             background-repeat:no-repeat;
             background-position:center;
             background-size:cover;
+            background-attachment:fixed;
         }
         .intro::before{
             content:'';
@@ -398,6 +399,18 @@
         }
         /* 인트로스타인끝 */
 
+        /* 어바웃스타일 */
+        .about{
+            background-image:linear-gradient(90deg,rgba(0,0,0,0.85),rgba(0,0,0,0.9))
+        }
+        .about h2{
+            display:none;
+        }
+        .about .in{
+           display:flex;
+           flex-flow:column nowrap;            
+        }
+        .about-img{}
        
 
 
@@ -426,16 +439,14 @@
                 width:36px;
             }
             /* 헤더스타일끝 */
-        }
-       
 
-        
+            /* 어바웃스타일 */
+            .about .in{
+                flex-direction:row;
+            }
+            /* 어바웃스타일끝 */
 
-
-
-
-
-
+        }  
 
 
         @media (min-width:1200px){
@@ -576,9 +587,33 @@
                 </div>
             </div>
         </section>
-        <section class="sec about-me" id="about">
+        <section class="sec about" id="about">
             <div class="container">
-                <h2>about</h2>
+                <h2>about me</h2>
+                <div class="in">
+                    <div class="about-img img-box">
+                        <img src="./images/img-about.jpg" alt="about me">
+                    </div>
+                    <div class="about-txt">
+                        <h3>about me</h3>
+                        <div class="txt01">
+                            <h4>자기개발을 하는 사람</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, mollitia?</p>
+                        </div>
+                        <div class="txt02">
+                            <h4>삶의 가치를 아는 사람</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint aliquam quibusdam dolorem.</p>
+                        </div>
+                        <div class="txt03">
+                            <h4>약속의 중요성을 아는 사람</h4>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis, expedita obcaecati.</p>
+                        </div>
+                        <div class="txt04">
+                            <h4>아는것이 아닌 할수 있는 사람</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="sec my-skills" id="skills">
