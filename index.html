@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>CHO Portfolio</title>
     <style>
         /* CSS Reset */
@@ -429,6 +430,9 @@
         .about-txt div{
             margin-bottom:2em;
         }
+        .about-txt .txt04{
+            margin-bottom:0;
+        }
         .about-txt h4{
             margin-bottom:0.5em;
             font-size:1.2em;            
@@ -436,9 +440,10 @@
         .about-txt h4::before{
             content:'';
             display:inline-block;
-            width:14px;
-            height:8px;
-            border:2px solid #fff;
+            width: 10px;
+            height: 7px;
+            margin: 0 11px 4px 0;
+            border: 3px solid #fff;
             border-top:none;
             border-right:none;
             transform:rotate(-45deg);
@@ -561,7 +566,7 @@
             }
             .about-txt{
                 grid-column:2/3;
-                padding-left:50px;
+                padding:30px 50px;
                 text-align:left;
                 background-image:url(./images/bg-about.jpg);
                 background-repeat:no-repeat;
@@ -650,20 +655,20 @@
                         <img src="./images/img-about.jpg" alt="about me">
                     </div>
                     <div class="about-txt">
-                        <h3>about me</h3>
-                        <div class="txt01">
+                        <h3 data-aos="zoom-in">about me</h3>
+                        <div class="txt01" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="0">
                             <h4>자기개발을 하는 사람</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, mollitia?</p>
                         </div>
-                        <div class="txt02">
+                        <div class="txt02" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
                             <h4>삶의 가치를 아는 사람</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint aliquam quibusdam dolorem.</p>
                         </div>
-                        <div class="txt03">
+                        <div class="txt03" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
                             <h4>약속의 중요성을 아는 사람</h4>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis, expedita obcaecati.</p>
                         </div>
-                        <div class="txt04">
+                        <div class="txt04" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="900">
                             <h4>아는것이 아닌 할수 있는 사람</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         </div>
@@ -692,8 +697,11 @@
             </div>
         </footer>
     </section>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
+        AOS.init();
         // 전역변수
         let popupEl = document.getElementById('popup-cookie');
         let chk01 = document.getElementById('chk01');
@@ -769,6 +777,20 @@
                 }
             }
     
+
+
+
+            // let intLeftEl = document.querySelector('.intro-left');
+            // intLeftEl.style.transform = 'translateY(200px)';
+            // intLeftEl.style.opacity = '0';
+            // intLeftEl.style.transition='2s';
+            // window.onscroll=function(){
+            //     let winTop = window.scrollY;
+            //     if(winTop>=50){
+            //         intLeftEl.style.transform = 'translateY(0)';
+            //         intLeftEl.style.opacity = '1';
+            //     }
+            // }
     </script>
 </body>
 </html>
