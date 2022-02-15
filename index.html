@@ -12,7 +12,7 @@
         ul,ol,li{list-style:none;}
         img{width:100%;}
 
-        /* 폰트 */
+        /* 공통스타일 */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
         :root{
             scroll-behavior:smooth;
@@ -39,6 +39,7 @@
             font-size:2em;
             text-transform:uppercase;
         }
+        /* 공통스타일끝 */
 
 
 
@@ -117,10 +118,10 @@
         }
         h1{
             border:3px solid #eee;
-            padding:15px;
+            padding:12px;
 
             font-weight:600;
-            font-size:2em;
+            font-size:1.6em;
             text-transform:uppercase;
         }
         .btn-nav{
@@ -250,7 +251,10 @@
                 transform:scale(1.7);
             }
         }
+        /* 헤더스타일끝 */
 
+
+        /* 인트로 스타일 */
         .intro{
             position: relative;
             z-index:1;
@@ -392,7 +396,37 @@
             font-size:100px;
             opacity: 1;           
         }
+        /* 인트로스타인끝 */
+
        
+
+
+
+        @media (min-width:560px){
+            /* 헤더스타일 */
+            h1{
+                padding:15px;
+                font-size:2em;
+            }
+            /* 헤더스타일끝 */
+        }
+
+
+        @media (min-width:940px){
+            /* 공통스타일 */
+            .container{
+                padding:0 60px;
+            }
+            /* 공통스타일끝 */
+
+            /* 헤더스타일 */
+            .header .in::before{
+                content:'';
+                display:block;
+                width:36px;
+            }
+            /* 헤더스타일끝 */
+        }
        
 
         
@@ -405,6 +439,16 @@
 
 
         @media (min-width:1200px){
+            /* 공통스타일 */
+            .container{
+                padding:0 120px;
+            }
+            /* 공통스타일 */
+
+            /* 헤더스타일 */
+            .header .in::before{
+                display:none;
+            }
             .btn-nav{
                 display:none;
             }  
@@ -424,7 +468,9 @@
             #main-nav li:hover::before{
                 animation-name:none;
             }
+            /* 헤더스타일끝 */
 
+            /* 인트로스타일 */
             .intro .container{
                 justify-content: space-between;
             }
@@ -464,6 +510,7 @@
                     opacity:0.5;
                 }
             }
+            /* 인트로스타일끝 */
 
         }
 
