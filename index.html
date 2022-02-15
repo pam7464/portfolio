@@ -21,7 +21,7 @@
             font-weight:400;
             font-size:14px;
             color:#fff;
-            line-height:1em;
+            line-height:1;
         }
         .sec{
             height:100vh;
@@ -282,7 +282,9 @@
         .intro h2{
             display:none;
         }
-       
+        .intro-left{
+            padding-bottom:90px;
+        }
         .intro-left p{
             line-height:2;
             position:relative;
@@ -317,11 +319,17 @@
             animation-delay:1.75s;
         }
         .intro-left p:last-child{
+            margin-top:2em;
             border:2px solid #fff;
             padding:0.5em;
             text-align:center;
             opacity:1;
             animation:none;
+            background-color:rgba(0,0,0,0);
+            transition: 0.3s;
+        }
+        .intro-left p:last-child:hover{
+            background-color:rgba(0,0,0,1);
         }
 
 
@@ -365,7 +373,24 @@
         } */
 
         .intro-right{
-            display:none;
+            display:none;        
+            position:relative;            
+            align-self: flex-start; 
+        }           
+        .intro-right p{
+            font-weight:700;
+            font-size:0;
+            text-transform:uppercase;
+            line-height:1;
+            opacity:0;
+        }
+        .intro-right p:last-child{
+            position:absolute;
+            right:9999px;
+            top:400px;
+            transform:rotate(90deg);
+            font-size:100px;
+            opacity: 1;           
         }
        
        
@@ -406,9 +431,38 @@
             .intro-left{
                 align-self:flex-end;
             }
+            .intro-left p{ 
+                font-size:1.2em;
+            }
             .intro-right{
-                align-self: flex-start;
-                display:block;
+               display:block;
+            }
+            .intro-right p:first-child{
+                animation:intro-right01 0.5s 0.3s ease forwards;
+            }
+
+            @keyframes intro-right01 {
+                0%{
+                    font-size:0;
+                    opacity:0;
+                }
+                100%{
+                    font-size:300px;
+                    opacity:1;
+                }
+            }
+            .intro-right p:last-child{
+                animation:intro-right02 0.5s 2.75s ease forwards ;
+            }
+            @keyframes intro-right02 {
+                0%{
+                    right:9999px;
+                    opacity:1;
+                }
+                100%{
+                    right:-50px;
+                    opacity:0.5;
+                }
             }
 
         }
