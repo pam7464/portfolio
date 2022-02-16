@@ -177,19 +177,21 @@
             top:0;
             bottom:0;
             z-index:9996;
-            padding:60px 0;
             background-color:#222;
-            transition:0.3s;
-
-            display:flex;
-            flex-flow:column nowrap;
-            justify-content:space-around;
+            transition:0.3s; 
+            
+            display:grid;
+            justify-content:center;
             align-items:center;
         }
         #main-nav.active{
             left:0;
             right:0;
             overflow-y:scroll;
+        }
+        #main-nav ul{
+            display:grid;            
+            gap:20px;
         }
         #main-nav li{            
             border-bottom:1px solid transparent; 
@@ -743,7 +745,9 @@
 
         @media (min-width:1200px){
             /* 공통스타일 */
-           
+           .wrapper.lock{
+               height:auto;
+           }
             /* 공통스타일 */
 
             /* 헤더스타일 */
@@ -756,7 +760,6 @@
             #main-nav{
                 position:static;
                 background-color:transparent;
-
                 flex-direction:row;
             }
             #main-nav li {       
@@ -894,13 +897,15 @@
                             <div class="line">라인</div>
                             <div class="line">라인</div>
                         </div>
-                        <ul id="main-nav">
-                            <li data-after="home"><a href="#intro">home</a></li>
-                            <li data-after="about us"><a href="#about">about us</a></li>
-                            <li data-after="my skills"><a href="#skills">my skills</a></li>
-                            <li data-after="projects"><a href="#projects">projects</a></li>
-                            <li data-after="contact me"><a href="#contact">contact me</a></li>
-                        </ul>
+                        <div class="main-nav" id="main-nav">
+                            <ul>
+                                <li data-after="home"><a href="#intro">home</a></li>
+                                <li data-after="about us"><a href="#about">about us</a></li>
+                                <li data-after="my skills"><a href="#skills">my skills</a></li>
+                                <li data-after="projects"><a href="#projects">projects</a></li>
+                                <li data-after="contact me"><a href="#contact">contact me</a></li>
+                            </ul>
+                        </div>
                     </nav>
                 </div>
             </div>
