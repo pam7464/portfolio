@@ -536,6 +536,9 @@
 
 
         /* 프로젝트 포트폴리오 스타일 */
+        .projects .container{
+            padding:0 40px;
+        }
        .projects .in{
            display:flex;
            flex-flow:column nowrap;
@@ -556,18 +559,46 @@
         }
         .all-project ul{
             display:grid;
-            gap:40px;
+            gap:40px;            
         }
         .all-project li{
             display:grid;
+            border:1px solid rgba(255,255,255,0.5);
         }
-        /* .all-project li .project-img{
-            order:2;            
+        .project-img{
+            order:2;
         }
-        .all-project li .project-content{
+       
+        .project-content{
             order:1;
-        } */
-
+            padding:30px;
+            display:grid;
+            gap:16px;
+            align-content:center ;
+        } 
+        .project-tit{
+            font-size:2em;
+            text-transform: uppercase;
+        }
+        .project-txt{
+            font-size:1.1em;
+            color:#999;
+            line-height:1.5em;
+        }
+        .project-txt span:first-child{
+            font-weight:700;
+            font-size:1.2em;
+            color:#ccc;
+        }
+        .project-btn{
+            display:flex;
+        }
+        .project-btn>div{
+            margin-right:6px;
+            padding:10px;
+            border-radius: 4px;
+            background-color:#333;
+        }
 
         /* 프로젝트 포트폴리오 스타일끝 */
 
@@ -594,17 +625,23 @@
 
         @media (min-width:768px){
             /* 프로젝트 포트폴리오  */
+            .projects .container{
+                max-width:940px;
+                padding:0;
+            }
             .all-project ul{
                 gap:0;
             }
             .all-project li{
                 grid-template-columns:1fr 1fr;
+                border:none;
             }
+           
             .all-project li:nth-child(2n) .project-img{
-                order:2;
+                order:1;
             }
             .all-project li:nth-child(2n) .project-content{
-                order:1;
+                order:2;
             }
             /* 프로젝트 포트폴리오끝  */
         }
@@ -656,13 +693,16 @@
 
 
             /* 프로젝트 포트폴리오 */
+            .projects .container{
+                max-width:1960px;
+                padding:0 40px;
+            }
             .projects h3{
                 align-self:flex-start;
             }
             /* 프로젝트 포트폴리오끝 */
 
         }  
-
 
         @media (min-width:1200px){
             /* 공통스타일 */
