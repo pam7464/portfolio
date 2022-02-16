@@ -536,9 +536,7 @@
 
 
         /* 프로젝트 포트폴리오 스타일 */
-        .projects .container{
-            padding:0 40px;
-        }
+        
        .projects .in{
            display:flex;
            flex-flow:column nowrap;
@@ -567,6 +565,13 @@
         }
         .project-img{
             order:2;
+            overflow:hidden;
+        }
+        .project-img .img-box{
+            transition:0.3s;
+        }
+        .project-img:hover .img-box{
+            transform:scale(1.1);
         }
        
         .project-content{
@@ -598,7 +603,12 @@
             padding:10px;
             border-radius: 4px;
             background-color:#333;
-        }
+        } 
+        .project-btn>div:hover{
+            /* border:1px solid #333; */
+            background-color:#fff;
+            color:#333;
+        }       
 
         /* 프로젝트 포트폴리오 스타일끝 */
 
