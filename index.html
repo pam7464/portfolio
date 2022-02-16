@@ -422,7 +422,7 @@
         .about-txt{
             text-align:center;
         }
-        .about-txt h3{
+        .about-txt h3,.projects h3{
             margin-bottom:1em;
             font-weight:500;
             font-size:2em;
@@ -536,11 +536,46 @@
 
 
         /* 프로젝트 포트폴리오 스타일 */
-        .projects h3{
-            
+       .projects .in{
+           display:flex;
+           flex-flow:column nowrap;
+       }
+       .projects h3{
+           align-self:center;
+       }
+        .projects h3 span{
+            display:block;
         }
+        .projects h3 span::after{
+            content:'';
+            display:block;
+            width:100%;
+            height:2px;
+            background-color:#fff;
+            margin:5px 0 3px;
+        }
+        .all-project ul{
+            display:grid;
+            gap:40px;
+        }
+        .all-project li{
+            display:grid;
+        }
+        /* .all-project li .project-img{
+            order:2;            
+        }
+        .all-project li .project-content{
+            order:1;
+        } */
+
 
         /* 프로젝트 포트폴리오 스타일끝 */
+
+
+
+
+
+
 
         @media (min-width:560px){
             /* 헤더스타일 */
@@ -557,6 +592,22 @@
             /* 스킬스타일끝 */
         }
 
+        @media (min-width:768px){
+            /* 프로젝트 포트폴리오  */
+            .all-project ul{
+                gap:0;
+            }
+            .all-project li{
+                grid-template-columns:1fr 1fr;
+            }
+            .all-project li:nth-child(2n) .project-img{
+                order:2;
+            }
+            .all-project li:nth-child(2n) .project-content{
+                order:1;
+            }
+            /* 프로젝트 포트폴리오끝  */
+        }
 
         @media (min-width:940px){
             /* 공통스타일 */
@@ -601,9 +652,14 @@
             .skills-bottom ul{
                 grid-template-columns:1fr 1fr 1fr;
             }
-
             /* 스킬스타일끝 */
 
+
+            /* 프로젝트 포트폴리오 */
+            .projects h3{
+                align-self:flex-start;
+            }
+            /* 프로젝트 포트폴리오끝 */
 
         }  
 
@@ -912,11 +968,153 @@
                 <div class="in">
                     <h3>
                         <span>my</span>
-                        <br>
-                        <span>web</span>                        
-                        <br>
+                        <span>web</span>
                         <span>portfolio</span>                        
                     </h3>
+                    <div class="all-project">
+                        <ul>
+                            <li>
+                                <div class="project-img">
+                                    <div class="img-box"><img src="./images/img-megabox.jpg" alt="메가박스"></div>
+                                </div>
+                                <div class="project-content">
+                                    <div class="project-tit">
+                                        <h4>megabox</h4>
+                                    </div>
+                                    <div class="project-txt">
+                                        <p>
+                                            <span>#반응형#리뉴얼#제작기간7일#참여율30%</span>
+                                            <br>
+                                            <span>기존의 고정형 웹페이지를 반응형으로 리뉴얼하였습니다. 고전적인 float, block, inline을 이용한 레이아웃을 최신 트렌드인 flex container를 이용하여 사이트 특성에 맞도록 제작하였습니다.</span>
+                                        </p>
+                                    </div>
+                                    <div class="project-btn">
+                                        <div class="btn-source">
+                                            <a href="https://github.com/pam7464/megabox"  target="_blank">소스보기</a>
+                                        </div>
+                                        <div class="btn-doc">
+                                            <a href="#"  target="_blank">기획안보기</a>
+                                        </div>
+                                        <div class="btn-site">
+                                            <a href="https://pam7464.github.io/megabox/" target="_blank">바로가기</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="project-img">
+                                    <div class="img-box"><img src="./images/img-paiks.jpg" alt="빽다방"></div>
+                                </div>
+                                <div class="project-content">
+                                    <div class="project-tit">
+                                        <h4>paik's coffee</h4>
+                                    </div>
+                                    <div class="project-txt">
+                                        <p>
+                                            <span>#반응형#리뉴얼#제작기간7일#참여율30%</span>
+                                            <br>
+                                            <span>기존의 고정형 웹페이지를 반응형으로 리뉴얼하였습니다. 고전적인 float, block, inline을 이용한 레이아웃을 최신 트렌드인 flex container를 이용하여 사이트 특성에 맞도록 제작하였습니다.</span>
+                                        </p>
+                                    </div>
+                                    <div class="project-btn">
+                                        <div class="btn-source">
+                                            <a href="https://github.com/pam7464/paikdabang"  target="_blank">소스보기</a>
+                                        </div>
+                                        <div class="btn-doc">
+                                            <a href="#"  target="_blank">기획안보기</a>
+                                        </div>
+                                        <div class="btn-site">
+                                            <a href="https://pam7464.github.io/paikdabang/" target="_blank">바로가기</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="project-img">
+                                    <div class="img-box"><img src="./images/img-indigo.jpg" alt="인디고"></div>
+                                </div>
+                                <div class="project-content">
+                                    <div class="project-tit">
+                                        <h4>megabox</h4>
+                                    </div>
+                                    <div class="project-txt">
+                                        <p>
+                                            <span>#반응형#리뉴얼#제작기간7일#참여율30%</span>
+                                            <br>
+                                            <span>기존의 고정형 웹페이지를 반응형으로 리뉴얼하였습니다. 고전적인 float, block, inline을 이용한 레이아웃을 최신 트렌드인 flex container를 이용하여 사이트 특성에 맞도록 제작하였습니다.</span>
+                                        </p>
+                                    </div>
+                                    <div class="project-btn">
+                                        <div class="btn-source">
+                                            <a href="https://github.com/pam7464/indigo"  target="_blank">소스보기</a>
+                                        </div>
+                                        <div class="btn-doc">
+                                            <a href="#"  target="_blank">기획안보기</a>
+                                        </div>
+                                        <div class="btn-site">
+                                            <a href="https://pam7464.github.io/indigo/" target="_blank">바로가기</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="project-img">
+                                    <div class="img-box"><img src="./images/img-hollys.jpg" alt="할리스커피"></div>
+                                </div>
+                                <div class="project-content">
+                                    <div class="project-tit">
+                                        <h4>megabox</h4>
+                                    </div>
+                                    <div class="project-txt">
+                                        <p>
+                                            <span>#반응형#리뉴얼#제작기간7일#참여율30%</span>
+                                            <br>
+                                            <span>기존의 고정형 웹페이지를 반응형으로 리뉴얼하였습니다. 고전적인 float, block, inline을 이용한 레이아웃을 최신 트렌드인 flex container를 이용하여 사이트 특성에 맞도록 제작하였습니다.</span>
+                                        </p>
+                                    </div>
+                                    <div class="project-btn">
+                                        <div class="btn-source">
+                                            <a href="https://github.com/pam7464/hollys"  target="_blank">소스보기</a>
+                                        </div>
+                                        <div class="btn-doc">
+                                            <a href="#"  target="_blank">기획안보기</a>
+                                        </div>
+                                        <div class="btn-site">
+                                            <a href="https://pam7464.github.io/hollys/" target="_blank">바로가기</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="project-img">
+                                    <div class="img-box"><img src="./images/img-travel.jpg" alt="여행"></div>
+                                </div>
+                                <div class="project-content">
+                                    <div class="project-tit">
+                                        <h4>megabox</h4>
+                                    </div>
+                                    <div class="project-txt">
+                                        <p>
+                                            <span>#반응형#리뉴얼#제작기간7일#참여율30%</span>
+                                            <br>
+                                            <span>기존의 고정형 웹페이지를 반응형으로 리뉴얼하였습니다. 고전적인 float, block, inline을 이용한 레이아웃을 최신 트렌드인 flex container를 이용하여 사이트 특성에 맞도록 제작하였습니다.</span>
+                                        </p>
+                                    </div>
+                                    <div class="project-btn">
+                                        <div class="btn-source">
+                                            <a href="https://github.com/pam7464/travel"  target="_blank">소스보기</a>
+                                        </div>
+                                        <div class="btn-doc">
+                                            <a href="#"  target="_blank">기획안보기</a>
+                                        </div>
+                                        <div class="btn-site">
+                                            <a href="https://pam7464.github.io/travel/" target="_blank">바로가기</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>                            
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
