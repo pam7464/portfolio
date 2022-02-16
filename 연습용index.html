@@ -636,6 +636,30 @@
         /* 프로젝트 포트폴리오 스타일끝 */
 
 
+        .skills-bottom li{
+            position:relative;
+        }
+        .skills-bottom li>div{
+            backface-visibility:hidden;
+            transition:1s;
+        }
+        .skills-bottom .back{
+            position:absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            background-color:red;
+            color:#fff;
+            transform:rotateY(180deg);
+        }
+        .skills-bottom li:hover .front{
+            transform:rotateY(180deg);
+        }
+        .skills-bottom li:hover .back{
+            transform:rotateY(0deg);
+        }
+
 
 
 
@@ -969,16 +993,21 @@
                     </div>
                     <div class="skills-bottom skills-right">
                         <ul>
-                            <li>                               
-                                <h3>html5</h3>
-                                <div class="img-box">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                                        <path d="M0 32l34.9 395.8L191.5 480l157.6-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"/>
-                                    </svg>
+                            <li>
+                                <div class="front">
+                                    <h3>html5</h3>
+                                    <div class="img-box">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                            <path d="M0 32l34.9 395.8L191.5 480l157.6-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"/>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quo?
+                                    </p>
                                 </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quo?
-                                </p>                                
+                                <div class="back">
+                                    뒷면
+                                </div>
                             </li>
                             <li>
                                 <h3>css3</h3>
