@@ -555,6 +555,7 @@
             background-color:#fff;
             margin:5px 0 3px;
         }
+        
         .all-project ul{
             display:grid;
             gap:40px;            
@@ -566,13 +567,31 @@
         .project-img{
             order:2;
             overflow:hidden;
-        }
-        .project-img .img-box{
+            position:relative;
+        }  
+        .project-img::after{
+            content:'';
+            display:'block';
+            position:absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            background-color:rgba(255,255,255,0);
             transition:0.3s;
         }
-        .project-img:hover .img-box{
-            transform:scale(1.1);
+        .project-img:hover::after{
+            background-color:rgba(255,255,255,0.3);
         }
+        .project-img .img-box{
+            filter:grayscale(1);
+            transition:0.3s;            
+        }
+        .project-img:hover .img-box{
+            transform:scale(1.1); 
+            filter:grayscale(0.8);
+        }
+        
        
         .project-content{
             order:1;
@@ -704,11 +723,18 @@
 
             /* 프로젝트 포트폴리오 */
             .projects .container{
-                max-width:1960px;
-                padding:0 40px;
+                width:80%;
+                max-width:1200px;
             }
             .projects h3{
                 align-self:flex-start;
+            }
+            .all-project li{
+                border:1px solid rgba(255,255,255,0.5);
+                border-bottom:none;
+            }
+            .all-project li:last-child{
+                border:1px solid rgba(255,255,255,0.5);
             }
             /* 프로젝트 포트폴리오끝 */
 
@@ -1017,17 +1043,17 @@
                 <h2>projects</h2>
                 <div class="in">
                     <h3>
-                        <span>my</span>
-                        <span>web</span>
-                        <span>portfolio</span>                        
+                        <span data-aos="fade-right" data-aos-delay="300">my</span>
+                        <span data-aos="fade-right" data-aos-delay="600">web</span>
+                        <span data-aos="fade-right" data-aos-delay="900">portfolio</span>                        
                     </h3>
                     <div class="all-project">
                         <ul>
                             <li>
-                                <div class="project-img">
+                                <div class="project-img" data-aos="fade-left">
                                     <div class="img-box"><img src="./images/img-megabox.jpg" alt="메가박스"></div>
                                 </div>
-                                <div class="project-content">
+                                <div class="project-content" data-aos="fade-right">
                                     <div class="project-tit">
                                         <h4>megabox</h4>
                                     </div>
@@ -1043,7 +1069,7 @@
                                             <a href="https://github.com/pam7464/megabox"  target="_blank">소스보기</a>
                                         </div>
                                         <div class="btn-doc">
-                                            <a href="#"  target="_blank">기획안보기</a>
+                                            <a href="./media/megabox.pdf" target="_blank">기획안보기</a>
                                         </div>
                                         <div class="btn-site">
                                             <a href="https://pam7464.github.io/megabox/" target="_blank">바로가기</a>
@@ -1052,10 +1078,10 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="project-img">
+                                <div class="project-img" data-aos="fade-left">
                                     <div class="img-box"><img src="./images/img-paiks.jpg" alt="빽다방"></div>
                                 </div>
-                                <div class="project-content">
+                                <div class="project-content" data-aos="fade-right">
                                     <div class="project-tit">
                                         <h4>paik's coffee</h4>
                                     </div>
@@ -1080,12 +1106,12 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="project-img">
+                                <div class="project-img" data-aos="fade-left">
                                     <div class="img-box"><img src="./images/img-indigo.jpg" alt="인디고"></div>
                                 </div>
-                                <div class="project-content">
+                                <div class="project-content" data-aos="fade-right">
                                     <div class="project-tit">
-                                        <h4>megabox</h4>
+                                        <h4>indigo</h4>
                                     </div>
                                     <div class="project-txt">
                                         <p>
@@ -1108,12 +1134,12 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="project-img">
+                                <div class="project-img" data-aos="fade-left">
                                     <div class="img-box"><img src="./images/img-hollys.jpg" alt="할리스커피"></div>
                                 </div>
-                                <div class="project-content">
+                                <div class="project-content" data-aos="fade-right">
                                     <div class="project-tit">
-                                        <h4>megabox</h4>
+                                        <h4>hollys</h4>
                                     </div>
                                     <div class="project-txt">
                                         <p>
@@ -1136,12 +1162,12 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="project-img">
+                                <div class="project-img" data-aos="fade-left">
                                     <div class="img-box"><img src="./images/img-travel.jpg" alt="여행"></div>
                                 </div>
-                                <div class="project-content">
+                                <div class="project-content" data-aos="fade-right">
                                     <div class="project-tit">
-                                        <h4>megabox</h4>
+                                        <h4>travel</h4>
                                     </div>
                                     <div class="project-txt">
                                         <p>
@@ -1182,7 +1208,7 @@
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <script>
+    <script>       
         AOS.init();
         // 전역변수
         let popupEl = document.getElementById('popup-cookie');
