@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{height:10000px}
+        button{
+            position:relative;
+            z-index:1;
+        }
+        .modal-container{                        
+            justify-content: center;
+            align-items:center;
+            display:none;
+            position:fixed;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            background-color:rgba(0,0,0,0.3);
+        }
+        .modal{
+            display:flex; 
+            flex-flow:column nowrap;           
+            overflow-y: scroll;
+            width:300px;
+            height:100%;            
+        }
+        .modal::-webkit-scrollbar{
+            display:none;
+        }
+        .item{
+           margin:50px 0; 
+        }
+    </style>
+</head>
+<body>
+    <button>버튼</button>
+    <div class="modal-container">
+        <div class="modal">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+            <div class="item">9</div>
+            <div class="item">0</div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('button').addEventListener('click',function(){
+            document.querySelector('.modal-container').style.display='flex';
+            document.querySelector('body').style.height='100vh';
+            document.querySelector('body').style.overflow='hidden';
+        })
+    </script>
+</body>
+</html>
