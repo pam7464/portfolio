@@ -15,6 +15,19 @@
 
         /* 공통스타일 */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+        /* 마우스포인터 */
+        .mouse-cursor{
+            position:fixed;
+            transform:translate(-50%,-50%);
+            z-index:9995;
+
+            width:100px;
+            height:100px;
+            border-radius:50%;
+            background-color:#fff;
+            mix-blend-mode:difference;
+            pointer-events:none;
+        }
         :root{
             scroll-behavior:smooth;
             width:100%;            
@@ -23,7 +36,8 @@
             font-size:14px;
             color:#fff;
             line-height:1;
-        }
+            cursor:none;
+        }       
         .wrapper{
             width:100%;
             overflow:hidden;
@@ -1224,6 +1238,7 @@
             </div>
         </footer>
     </section>
+    <div class="mouse-cursor" id="msCursor"></div>
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./js/my-object.js"></script>
@@ -1282,6 +1297,16 @@
             }
         })
 
+        // 마우스무브 이벤트
+        window.addEventListener('mousemove',function(viewPage){
+            let mouseX = viewPage.clientX;
+            let mouseY = viewPage.clientY;
+            let msCursor = document.getElementById('msCursor')
+            console.log('x = ' + mouseX);
+            console.log('y = ' + mouseY);
+            msCursor.style.left = mouseX + 'px';
+            msCursor.style.top = mouseY + 'px';
+        })
 
        
         // FUNCTION
