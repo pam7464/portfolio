@@ -1253,16 +1253,14 @@
             let navEls = document.querySelectorAll('#main-nav a');
             let mainNavEl = document.querySelector('.main-nav-container');
             let wrapperEl = document.querySelector('.wrapper');
-            let mainNavState = mainNavEl.classList.contains('active');
+            let mainNavState = mainNavEl.classList.contains('lock');
             if(mainNavState){
-                // navObj.closeNav(mainNavEl);
-                // navObj.unLockWrap(wrapperEl);
                 myObj.unlock(mainNavEl);
                 myObj.unlock(wrapperEl);
             }else{
                 myObj.lock(mainNavEl);
                 myObj.lock(wrapperEl);                
-                navObj.setNav(navEls,wrapperEl,mainNavEl);
+                myObj.setNav(navEls,wrapperEl,mainNavEl);
             }
         })
         // 윈도우 리사이즈 이벤트
@@ -1270,42 +1268,42 @@
             let mainNavEl = document.querySelector('.main-nav-container');
             let wrapperEl = document.querySelector('.wrapper');
             if(window.innerWidth>=1200){
-                navObj.closeNav(mainNavEl);
-                navObj.unLockWrap(wrapperEl);
+                myObj.unlock(mainNavEl);
+                myObj.unlock(wrapperEl);
             }
         })
         // window scroll 이벤트
         window.addEventListener('scroll',function(){
             let hEl = document.querySelector('.header');
             if(window.scrollY>10){
-                headerObj.lockHeader(hEl);
+                myObj.lock(hEl);
             }else{
-                headerObj.unLockHeader(hEl);
+                myObj.unlock(hEl);
             }
         })
 
 
        
         // FUNCTION
-            function winWidth(){
-                window.innerWidth;
-            }            
-            
-           
-            // 팝업 보이기/감추기 함수
-            function popup(){
-                if(getCookie('mainPopup')!=='hidden'){
-                    popupEl.classList.remove('dis-none');
-                }
+        function winWidth(){
+            window.innerWidth;
+        }            
+        
+        
+        // 팝업 보이기/감추기 함수
+        function popup(){
+            if(getCookie('mainPopup')!=='hidden'){
+                popupEl.classList.remove('dis-none');
             }
-            // set 쿠키만들기 함수
-            function setCookie(name,value,expir){
-                let date = new Date();
-                date.setDate(date.getDate() + expir);
-                document.cookie = name + '=' + value + ';expires=' + date +';path=/;';
-            }
-            // get 쿠키만들기 함수
-            function getCookie(name) { 
+        }
+        // set 쿠키만들기 함수
+        function setCookie(name,value,expir){
+            let date = new Date();
+            date.setDate(date.getDate() + expir);
+            document.cookie = name + '=' + value + ';expires=' + date +';path=/;';
+        }
+        // get 쿠키만들기 함수
+        function getCookie(name) { 
                 let value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
                 return value? value[2] : null;
             }
@@ -1314,6 +1312,7 @@
 
 
 
+            
             
     </script>
 </body>
