@@ -15,6 +15,8 @@
 
         /* 공통스타일 */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
         /* 마우스포인터 */
         .mouse-cursor{
             position:fixed;
@@ -37,7 +39,16 @@
             color:#fff;
             line-height:1;
             cursor:none;
-        }       
+        } 
+            /* 나중에 지울것 */
+                        .mouse-cursor{
+                            display:none;
+                        }
+                        :root{
+                            cursor:initial;
+                        }
+            /* 나중에 지울것 */
+
         .wrapper{
             width:100%;
             overflow:hidden;
@@ -487,7 +498,7 @@
         /* 어바웃스타일끝 */
 
         /* 스킬스타일 */
-        .skills{           
+        .skills,.contact{           
             background-image:url(./images/bg-intro.jpg);
             background-repeat:no-repeat;
             background-position:center;
@@ -662,11 +673,45 @@
 
         /* 프로젝트 포트폴리오 스타일끝 */
 
+        /* contact 시직 */
+        
+        .contact h2{
+            margin-bottom:50px;
+            font-size: 2em;
+            text-transform: uppercase;
+            text-align:center;           
+        }
+        .contact .in{ 
+            font-family: 'Playfair Display', serif;
+            font-weight:900;
+            font-style:italic;
+            max-width:500px;
+            margin:0 auto;           
+            display:grid;             
+            gap:40px;
+        }
+        .contact-box{                       
+            display:grid;
+            gap:10px;
+            grid-template-rows:20px auto;
+        }
+        .contact-box h3{
+            opacity:0.6;
+        }
+        .contact-box p{
+            font-size:1.6em;
+            line-height:1.2;            
+        }
+
+        /* contact 시직끝 */
 
 
 
 
 
+        footer{
+            margin-bottom:500px;
+        }
 
 
         @media (min-width:560px){
@@ -765,6 +810,14 @@
             }
             /* 프로젝트 포트폴리오끝 */
 
+            .contact h2{
+                text-align:left;
+            }
+
+            .contact .in{
+                max-width:100%;
+                grid-template-columns:repeat(3,1fr);
+            }
         }  
 
         @media (min-width:1200px){
@@ -1230,6 +1283,20 @@
         <section class="sec contact" id="contact">
             <div class="container">
                 <h2>contact</h2>
+                <div class="in">
+                    <div class="contact-box phone">
+                        <h3>Phone</h3>
+                        <p>010-1111-2222</p>
+                    </div>
+                    <div class="contact-box e-mail">
+                        <h3>E-mail</h3>
+                        <p>pam000@naver.com</p>
+                    </div>
+                    <div class="contact-box address">
+                        <h3>Address</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, totam?</p>
+                    </div>
+                </div>
             </div>
         </section>
         <footer class="footer">
