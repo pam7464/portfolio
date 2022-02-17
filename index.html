@@ -1226,6 +1226,7 @@
     </section>
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./js/my-object.js"></script>
 
     <script>       
         AOS.init();
@@ -1233,11 +1234,9 @@
         let popupEl = document.getElementById('popup-cookie');
         let chk01 = document.getElementById('chk01');
         let btnPopup = document.getElementById('btn-popup');
+        
         let tglNav = document.getElementById('tlg-nav');
-        let mainNavEl = document.querySelector('.main-nav-container');
-        let navEls = document.querySelectorAll('#main-nav a');
-        let headerEl = document.getElementById('home');
-        let wrapperEl = document.querySelector('.wrapper');
+        
 
         // 팝업닫기 이벤트
         btnPopup.addEventListener('click',()=>{
@@ -1248,66 +1247,49 @@
         });
         //팝업여부?
         popup();
+        
         // 내비게이션 show/close
         tglNav.addEventListener('click',function(){
+            let navEls = document.querySelectorAll('#main-nav a');
+            let mainNavEl = document.querySelector('.main-nav-container');
+            let wrapperEl = document.querySelector('.wrapper');
             let mainNavState = mainNavEl.classList.contains('active');
             if(mainNavState){
-                closeNav();
-                unLockWrap();
+                navObj.closeNav(mainNavEl);
+                navObj.unLockWrap(wrapperEl);
             }else{
-                showNav();
-                lockWrap();
-                setNav();
+                navObj.showNav(mainNavEl);
+                navObj.lockWrap(wrapperEl);
+                navObj.setNav(navEls,wrapperEl,mainNavEl);
             }
         })
         // 윈도우 리사이즈 이벤트
         window.addEventListener('resize',function(){
+            let mainNavEl = document.querySelector('.main-nav-container');
+            let wrapperEl = document.querySelector('.wrapper');
             if(window.innerWidth>=1200){
-                closeNav();
-                unLockWrap();
+                navObj.closeNav(mainNavEl);
+                navObj.unLockWrap(wrapperEl);
             }
         })
         // window scroll 이벤트
         window.addEventListener('scroll',function(){
+            let hEl = document.querySelector('.header');
             if(window.scrollY>10){
-                lockHeader();
+                headerObj.lockHeader(hEl);
             }else{
-                unLockHeader();
+                headerObj.unLockHeader(hEl);
             }
         })
 
 
-
+       
         // FUNCTION
             function winWidth(){
                 window.innerWidth;
-            }
-            function showNav(){
-                mainNavEl.classList.add('active');
-            }
-            function closeNav(){
-                mainNavEl.classList.remove('active');
-            }
-            function lockWrap(){
-                wrapperEl.classList.add('lock');
-            }
-            function unLockWrap(){
-                wrapperEl.classList.remove('lock');
-            }
-            function lockHeader(){
-                headerEl.classList.add('lock');
-            }
-            function unLockHeader(){
-                headerEl.classList.remove('lock');
-            }
-            function setNav(){
-                for(let idx=0;idx<navEls.length;idx++){
-                    navEls[idx].addEventListener('click',function(){
-                        unLockWrap();
-                        closeNav();
-                    })
-                }
-            }
+            }            
+            
+           
             // 팝업 보이기/감추기 함수
             function popup(){
                 if(getCookie('mainPopup')!=='hidden'){
@@ -1330,17 +1312,7 @@
 
 
 
-            // let intLeftEl = document.querySelector('.intro-left');
-            // intLeftEl.style.transform = 'translateY(200px)';
-            // intLeftEl.style.opacity = '0';
-            // intLeftEl.style.transition='2s';
-            // window.onscroll=function(){
-            //     let winTop = window.scrollY;
-            //     if(winTop>=50){
-            //         intLeftEl.style.transform = 'translateY(0)';
-            //         intLeftEl.style.opacity = '1';
-            //     }
-            // }
+            
     </script>
 </body>
 </html>
