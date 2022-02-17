@@ -1238,7 +1238,6 @@
         let navEls = document.querySelectorAll('#main-nav a');
         let headerEl = document.getElementById('home');
         let wrapperEl = document.querySelector('.wrapper');
-        
 
         // 팝업닫기 이벤트
         btnPopup.addEventListener('click',()=>{
@@ -1247,56 +1246,68 @@
                 setCookie('mainPopup','hidden',1);
             }
         });
-        
-        // 무조건 실행함수
         //팝업여부?
         popup();
-        
-        
-
-        
-
-      
-
-        
-            
+        // 내비게이션 show/close
+        tglNav.addEventListener('click',function(){
+            let mainNavState = mainNavEl.classList.contains('active');
+            if(mainNavState){
+                closeNav();
+                unLockWrap();
+            }else{
+                showNav();
+                lockWrap();
+                setNav();
+            }
+        })
+        // 윈도우 리사이즈 이벤트
+        window.addEventListener('resize',function(){
+            if(window.innerWidth>=1200){
+                closeNav();
+                unLockWrap();
+            }
+        })
         // window scroll 이벤트
-        window.addEventListener('scroll',()=>{
-            let scrTop = window.scrollY;
-            bgChange(scrTop,headerEl);
+        window.addEventListener('scroll',function(){
+            if(window.scrollY>10){
+                lockHeader();
+            }else{
+                unLockHeader();
+            }
         })
 
 
 
         // FUNCTION
+            function winWidth(){
+                window.innerWidth;
+            }
             function showNav(){
                 mainNavEl.classList.add('active');
             }
             function closeNav(){
                 mainNavEl.classList.remove('active');
             }
-            
-
+            function lockWrap(){
+                wrapperEl.classList.add('lock');
+            }
+            function unLockWrap(){
+                wrapperEl.classList.remove('lock');
+            }
+            function lockHeader(){
+                headerEl.classList.add('lock');
+            }
+            function unLockHeader(){
+                headerEl.classList.remove('lock');
+            }
             function setNav(){
                 for(let idx=0;idx<navEls.length;idx++){
                     navEls[idx].addEventListener('click',function(){
-
+                        unLockWrap();
+                        closeNav();
                     })
                 }
             }
-
-            function clearNav(){
-                    for(let idx=0;idx<navEls.length;idx++){
-                        navEls[idx].removeEventListener('click',function(){
-                        
-                    })
-                }
-            }
-            
-
-            
-
-            
             // 팝업 보이기/감추기 함수
             function popup(){
                 if(getCookie('mainPopup')!=='hidden'){
@@ -1315,15 +1326,7 @@
                 return value? value[2] : null;
             }
                         
-            // 배경 변경 함수
-            function bgChange(scrWidth,target){
-                if(scrWidth>0){
-                    target.classList.add('lock');
-                }else{
-                    target.classList.remove('lock');
-                }
-            }
-    
+            
 
 
 
