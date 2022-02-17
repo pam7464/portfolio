@@ -172,8 +172,8 @@
         }
         .main-nav-container{
             position:fixed;
-            left:0;
-            right:0;
+            left:100%;
+            right:-100%;
             top:0;
             bottom:0;
             z-index:9996;
@@ -204,6 +204,7 @@
         #main-nav li{  
             margin:30px 0;          
             border-bottom:1px solid transparent; 
+            padding:0.5em;
             font-weight:600;
             font-size:2em;
             text-transform:uppercase;
@@ -764,15 +765,19 @@
             .btn-nav{
                 display:none;
             }  
-            #main-nav{
+            .main-nav-container{
                 position:static;
                 background-color:transparent;
-
+                padding:0;
+                display:block;
+            }
+            #main-nav{
                 flex-direction:row;
             }
             #main-nav li {       
                 margin-top:0;
-                margin-bottom:0;        
+                margin-bottom:0;
+                margin-left:2em;        
                 font-weight: 500;
                 font-size: 1.5em;
             }           
@@ -1242,25 +1247,19 @@
                 setCookie('mainPopup','hidden',1);
             }
         });
-        // 팝업실행여부
+        
+        // 무조건 실행함수
+        //팝업여부?
         popup();
         
-        // 내비게이션 토글이벤트
-        tglNav.addEventListener('click',()=>{
-            showNav(mainNavEl);
-            tglNav.classList.toggle('close');
-            wrapperEl.classList.toggle('lock');
-        });
-
-        // 문서에서 특정 타겟으로 이동
-        for(let idx=0;idx<navEls.length;idx++){
-            navEls[idx].addEventListener('click',()=>{
-                showNav(mainNavEl);
-                tglNav.classList.toggle('close');
-                wrapperEl.classList.toggle('lock');
-            })
-        }
         
+
+        
+
+      
+
+        
+            
         // window scroll 이벤트
         window.addEventListener('scroll',()=>{
             let scrTop = window.scrollY;
@@ -1270,6 +1269,34 @@
 
 
         // FUNCTION
+            function showNav(){
+                mainNavEl.classList.add('active');
+            }
+            function closeNav(){
+                mainNavEl.classList.remove('active');
+            }
+            
+
+            function setNav(){
+                for(let idx=0;idx<navEls.length;idx++){
+                    navEls[idx].addEventListener('click',function(){
+
+                    })
+                }
+            }
+
+            function clearNav(){
+                    for(let idx=0;idx<navEls.length;idx++){
+                        navEls[idx].removeEventListener('click',function(){
+                        
+                    })
+                }
+            }
+            
+
+            
+
+            
             // 팝업 보이기/감추기 함수
             function popup(){
                 if(getCookie('mainPopup')!=='hidden'){
@@ -1287,12 +1314,7 @@
                 let value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
                 return value? value[2] : null;
             }
-            
-            // target 토글 함수
-            function showNav(target){
-                target.classList.toggle('active');
-            }
-           
+                        
             // 배경 변경 함수
             function bgChange(scrWidth,target){
                 if(scrWidth>0){

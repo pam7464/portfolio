@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            cursor:none;
+            color:#fff;
+        }
+        body{
+            background-color: #000;;
+        }
+        p{
+            mix-blend-mode: difference;
+        }
+        .cursor{
+            width:100px;
+            height:100px;
+            border-radius:50%;
+            background-color:#fff;            
+
+            position:fixed;
+            left:-9999px;
+            top:0;
+            transform:translate(-50%,-50%);
+
+            mix-blend-mode:difference;
+        }
+    </style>
+</head>
+<body>
+    <h1>제목</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ratione natus iure recusandae nam non iste libero dolore quam dignissimos fugit, in impedit minus amet cupiditate quis ducimus exercitationem porro.
+    Minima impedit rerum dolor sequi alias ea, itaque nam, dolorum consequatur eveniet, aliquid ab esse? Facere in eveniet illum aliquam voluptatem temporibus aperiam, eos et accusantium delectus nesciunt animi consequuntur.
+    Minus aliquam suscipit magni fugit! Maxime incidunt aspernatur accusantium doloribus molestias repellat itaque, repudiandae et voluptatum labore veritatis iste corrupti sapiente quis dolore, eaque ullam quae aliquam perspiciatis distinctio ipsum.
+    Illo nisi ipsum pariatur quaerat repudiandae porro totam, numquam inventore impedit, minus laborum facilis magnam id quod sunt! Dignissimos dolorum unde, animi quisquam quaerat recusandae dolores quas deserunt odit sunt.
+    Accusamus voluptate recusandae deleniti eligendi sit ipsam dignissimos soluta quisquam facere, explicabo quia ipsa tempore! Vitae maxime ut vero asperiores debitis similique perspiciatis beatae vel esse doloribus, dignissimos, eius recusandae.
+    Labore ea doloribus enim? Beatae quaerat, repellendus facere molestias et recusandae officia odio, nobis omnis quia ea inventore sed labore reprehenderit qui vitae fugit ducimus, magnam enim neque atque quibusdam!
+    Minus cum incidunt nesciunt impedit maxime quia, repudiandae aliquam a nemo necessitatibus odit, quo recusandae libero asperiores ipsam, perferendis delectus aliquid dolores culpa harum fuga? Laboriosam sequi dolore quidem incidunt?
+    Voluptatum quibusdam sapiente ipsa, consequuntur saepe, corporis asperiores optio sint tenetur explicabo adipisci doloremque autem magni ullam qui recusandae labore corrupti error eos deserunt? Molestiae ex eveniet doloremque maiores cum!
+    Officia, consequatur tempora porro natus, aliquid accusamus quis illo veniam dicta quod itaque doloribus eum nesciunt hic ab in excepturi nam rerum, laboriosam incidunt quia. Natus deleniti eligendi necessitatibus pariatur!
+    Nulla aperiam aliquid, ab facere labore sequi iure veniam sed accusantium repellendus, cumque perspiciatis dolorem exercitationem sunt iusto nam aspernatur! Labore incidunt alias vitae laudantium consequuntur quam quaerat adipisci? Expedita!</p>
+
+
+    <div class="cursor"></div>
+    <script>
+        let myCursor = document.querySelector('.cursor');
+        window.onmousemove = function(event){
+            let fixedX = event.clientX;
+            let fixedY = event.clientY;            
+            myCursor.style.display = 'block';
+            myCursor.style.left = fixedX + 'px';
+            myCursor.style.top = fixedY +'px';
+        }
+
+    </script>
+</body>
+</html>
