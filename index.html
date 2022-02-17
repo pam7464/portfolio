@@ -187,7 +187,7 @@
             align-items:stretch;
             
         }
-        .main-nav-container.active{
+        .main-nav-container.lock{
             left:0;
             right:0;            
         }
@@ -1247,7 +1247,7 @@
         });
         //팝업여부?
         popup();
-        
+
         // 내비게이션 show/close
         tglNav.addEventListener('click',function(){
             let navEls = document.querySelectorAll('#main-nav a');
@@ -1255,11 +1255,13 @@
             let wrapperEl = document.querySelector('.wrapper');
             let mainNavState = mainNavEl.classList.contains('active');
             if(mainNavState){
-                navObj.closeNav(mainNavEl);
-                navObj.unLockWrap(wrapperEl);
+                // navObj.closeNav(mainNavEl);
+                // navObj.unLockWrap(wrapperEl);
+                myObj.unlock(mainNavEl);
+                myObj.unlock(wrapperEl);
             }else{
-                navObj.showNav(mainNavEl);
-                navObj.lockWrap(wrapperEl);
+                myObj.lock(mainNavEl);
+                myObj.lock(wrapperEl);                
                 navObj.setNav(navEls,wrapperEl,mainNavEl);
             }
         })

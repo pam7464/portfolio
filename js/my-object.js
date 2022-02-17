@@ -1,10 +1,19 @@
+ let myObj ={
+     lock:function(target){
+        target.classList.add('lock');
+     },
+     unlock:function(target){
+         target.classList.remove('lock');
+     }
+ }
+ 
  // NAV OBJECT
  let navObj = {
     showNav:function(target){
-        target.classList.add('active');
+        target.classList.add('lock');
     },
     closeNav:function(target){
-        target.classList.remove('active');
+        target.classList.remove('lock');
     },
     lockWrap:function(target){
         target.classList.add('lock');
