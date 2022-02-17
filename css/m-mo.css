@@ -1,0 +1,11 @@
+@charset 'utf-8';
+
+@media (min-width:560px){
+            
+
+    /* 스킬스타일 */
+    .skills-bottom ul{
+        grid-template-columns:auto auto auto;
+    }
+    /* 스킬스타일끝 */
+}

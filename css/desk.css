@@ -1,0 +1,123 @@
+@charset 'utf-8';
+@media (min-width:1200px){
+    /* 공통스타일 */
+    .mouse-cursor{
+        display:block;
+    }
+    :root{
+        cursor:none;
+    }
+    /* 공통스타일 */
+
+    /* 헤더스타일 */
+    .header .in::before{
+        display:none;
+    }
+    .btn-nav{
+        display:none;
+    }  
+    .main-nav-container{
+        position:static;
+        background-color:transparent;
+        padding:0;
+        display:block;
+    }
+    #main-nav{
+        flex-direction:row;
+    }
+    #main-nav li {       
+        margin-top:0;
+        margin-bottom:0;
+        margin-left:2em;        
+        font-weight: 500;
+        font-size: 1.5em;
+    }           
+    
+    #main-nav li:hover::before{
+        animation-name:none;
+    }
+    /* 헤더스타일끝 */
+
+    /* 인트로스타일 */
+    .intro .container{
+        justify-content: space-between;
+    }
+    .intro-left{
+        align-self:flex-end;
+    }
+    .intro-left p{ 
+        font-size:1.2em;
+    }
+    .intro-right{
+       display:block;
+    }
+    .intro-right p:first-child{
+        animation:intro-right01 0.5s 0.3s ease forwards;
+    }
+
+    @keyframes intro-right01 {
+        0%{
+            font-size:0;
+            opacity:0;
+        }
+        100%{
+            font-size:300px;
+            opacity:1;
+        }
+    }
+    .intro-right p:last-child{
+        animation:intro-right02 0.5s 2.75s ease forwards ;
+    }
+    @keyframes intro-right02 {
+        0%{
+            right:9999px;
+            opacity:1;
+        }
+        100%{
+            right:-50px;
+            opacity:0.5;
+        }
+    }
+    /* 인트로스타일끝 */
+
+    /* 어바웃스타일 */
+    .about-img{
+        grid-column:1/2;
+    }
+    .about-txt{
+        grid-column:2/3;
+        padding:30px 50px;
+        text-align:left;
+        background-image:url(./images/bg-about.jpg);
+        background-repeat:no-repeat;
+        background-position:center;
+        background-size:cover;
+        background-attachment:fixed;
+    }
+    /* 어바웃스타일끝 */
+
+    /* 스킬스타일 */            
+  
+    .skills-left h3{
+        margin-bottom:30px;
+        align-self:flex-start;
+    }
+    .skills .skills-right{
+        flex:1;
+    }
+    
+    .skills-bottom li{
+        padding:16px;
+    }
+    /* 스킬스타일끝 */
+
+    .contact{
+        padding-bottom:50px;
+    }
+    footer{
+        display:block;
+    }
+    .page-bottom{
+        display:none;
+    }
+}
