@@ -15,6 +15,21 @@
 
         /* 공통스타일 */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        /* 마우스포인터 */
+        .mouse-cursor{
+            position:fixed;
+            transform:translate(-50%,-50%);
+            z-index:9995;
+
+            width:100px;
+            height:100px;
+            border-radius:50%;
+            background-color:#fff;
+            mix-blend-mode:difference;
+            pointer-events:none;
+        }
         :root{
             scroll-behavior:smooth;
             width:100%;            
@@ -23,7 +38,17 @@
             font-size:14px;
             color:#fff;
             line-height:1;
-        }
+            cursor:none;
+        } 
+            /* 나중에 지울것 */
+                        .mouse-cursor{
+                            display:none;
+                        }
+                        :root{
+                            cursor:initial;
+                        }
+            /* 나중에 지울것 */
+
         .wrapper{
             width:100%;
             overflow:hidden;
@@ -170,31 +195,41 @@
         .btn-nav .line:last-child{
             margin-bottom:0;
         }
-        #main-nav{            
+        .main-nav-container{
             position:fixed;
             left:100%;
             right:-100%;
             top:0;
             bottom:0;
             z-index:9996;
+            padding:60px 0;
             background-color:#222;
-            transition:0.3s; 
-            
-            display:grid;
+            transition:0.3s;
+
+            display:flex;
+            flex-flow:row nowrap;
             justify-content:center;
-            align-items:center;
+            align-items:stretch;
+            
         }
-        #main-nav.active{
+        .main-nav-container.lock{
             left:0;
-            right:0;
-            overflow-y:scroll;
+            right:0;            
         }
-        #main-nav ul{
-            display:grid;            
-            gap:20px;
+        #main-nav{
+            display:flex;
+            flex-flow:column nowrap;
+            align-items:center;
+            overflow:auto;
         }
-        #main-nav li{            
+        #main-nav::-webkit-scrollbar{
+            display:none;
+        }
+
+        #main-nav li{  
+            margin:30px 0;          
             border-bottom:1px solid transparent; 
+            padding:0.5em;
             font-weight:600;
             font-size:2em;
             text-transform:uppercase;
@@ -463,7 +498,7 @@
         /* 어바웃스타일끝 */
 
         /* 스킬스타일 */
-        .skills{           
+        .skills,.contact{           
             background-image:url(./images/bg-intro.jpg);
             background-repeat:no-repeat;
             background-position:center;
@@ -638,11 +673,47 @@
 
         /* 프로젝트 포트폴리오 스타일끝 */
 
+        /* contact 시직 */
+        
+        .contact h2{
+            margin-bottom:50px;
+            font-size: 2em;
+            text-transform: uppercase;
+            text-align:center;           
+        }
+        .contact .in{ 
+            font-family: 'Playfair Display', serif;
+            font-weight:900;
+            font-style:italic;
+            max-width:500px;
+            margin:0 auto;           
+            display:grid;             
+            gap:40px;
+        }
+        .contact-box{                       
+            display:grid;
+            gap:10px;
+            grid-template-rows:20px auto;
+        }
+        .contact-box h3{
+            opacity:0.6;
+        }
+        .contact-box p{
+            font-size:1.6em;
+            line-height:1.2;            
+        }
+        /* contact 시직끝 */
 
-
-
-
-
+        footer{
+            padding:40px 0;  
+            border-top:2px solid #fff;
+            background-color:#333; 
+        }
+        address{
+            font-size:2em;
+            text-transform:uppercase;
+            text-align:center;
+        }
 
 
         @media (min-width:560px){
@@ -741,13 +812,19 @@
             }
             /* 프로젝트 포트폴리오끝 */
 
+            .contact h2{
+                text-align:left;
+            }
+
+            .contact .in{
+                max-width:100%;
+                grid-template-columns:repeat(3,1fr);
+            }
         }  
 
         @media (min-width:1200px){
             /* 공통스타일 */
-           .wrapper.lock{
-               height:auto;
-           }
+           
             /* 공통스타일 */
 
             /* 헤더스타일 */
@@ -757,14 +834,19 @@
             .btn-nav{
                 display:none;
             }  
-            #main-nav{
+            .main-nav-container{
                 position:static;
                 background-color:transparent;
+                padding:0;
+                display:block;
+            }
+            #main-nav{
                 flex-direction:row;
             }
             #main-nav li {       
                 margin-top:0;
-                margin-bottom:0;        
+                margin-bottom:0;
+                margin-left:2em;        
                 font-weight: 500;
                 font-size: 1.5em;
             }           
@@ -897,8 +979,8 @@
                             <div class="line">라인</div>
                             <div class="line">라인</div>
                         </div>
-                        <div class="main-nav" id="main-nav">
-                            <ul>
+                        <div class="main-nav-container">
+                            <ul id="main-nav">
                                 <li data-after="home"><a href="#intro">home</a></li>
                                 <li data-after="about us"><a href="#about">about us</a></li>
                                 <li data-after="my skills"><a href="#skills">my skills</a></li>
@@ -1202,17 +1284,35 @@
         </section>
         <section class="sec contact" id="contact">
             <div class="container">
-                <h2>contact</h2>
+                <h2 data-aos="fade-left">contact</h2>
+                <div class="in">
+                    <div class="contact-box phone" data-aos="flip-left">
+                        <h3>Phone</h3>
+                        <p>010-1111-2222</p>
+                    </div>
+                    <div class="contact-box e-mail"  data-aos="flip-up">
+                        <h3>E-mail</h3>
+                        <p>pam000@naver.com</p>
+                    </div>
+                    <div class="contact-box address" data-aos="flip-right">
+                        <h3>Address</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, totam?</p>
+                    </div>
+                </div>
             </div>
         </section>
         <footer class="footer">
             <div class="container">
-                <h2>footer</h2>
+                <address>
+                    copyright : cho
+                </address>
             </div>
         </footer>
     </section>
+    <div class="mouse-cursor" id="msCursor"></div>
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./js/my-object.js"></script>
 
     <script>       
         AOS.init();
@@ -1220,11 +1320,8 @@
         let popupEl = document.getElementById('popup-cookie');
         let chk01 = document.getElementById('chk01');
         let btnPopup = document.getElementById('btn-popup');
+        
         let tglNav = document.getElementById('tlg-nav');
-        let mainNavEl = document.getElementById('main-nav');
-        let navEls = document.querySelectorAll('#main-nav a');
-        let headerEl = document.getElementById('home');
-        let wrapperEl = document.querySelector('.wrapper');
         
 
         // 팝업닫기 이벤트
@@ -1234,79 +1331,85 @@
                 setCookie('mainPopup','hidden',1);
             }
         });
-        // 팝업실행여부
+        //팝업여부?
         popup();
-        
-        // 내비게이션 토글이벤트
-        tglNav.addEventListener('click',()=>{
-            showNav(mainNavEl);
-            tglNav.classList.toggle('close');
-            wrapperEl.classList.toggle('lock');
-        });
 
-        // 문서에서 특정 타겟으로 이동
-        for(let idx=0;idx<navEls.length;idx++){
-            navEls[idx].addEventListener('click',()=>{
-                showNav(mainNavEl);
-                tglNav.classList.toggle('close');
-            })
-        }
-        
+        // 내비게이션 show/close
+        tglNav.addEventListener('click',function(){
+            let navEls = document.querySelectorAll('#main-nav a');
+            let mainNavEl = document.querySelector('.main-nav-container');
+            let wrapperEl = document.querySelector('.wrapper');
+            let mainNavState = mainNavEl.classList.contains('lock');
+            if(mainNavState){
+                myObj.unlock(mainNavEl);
+                myObj.unlock(wrapperEl);
+            }else{
+                myObj.lock(mainNavEl);
+                myObj.lock(wrapperEl);                
+                myObj.setNav(navEls,wrapperEl,mainNavEl);
+            }
+        })
+        // 윈도우 리사이즈 이벤트
+        window.addEventListener('resize',function(){
+            let mainNavEl = document.querySelector('.main-nav-container');
+            let wrapperEl = document.querySelector('.wrapper');
+            if(window.innerWidth>=1200){
+                myObj.unlock(mainNavEl);
+                myObj.unlock(wrapperEl);
+            }
+        })
         // window scroll 이벤트
-        window.addEventListener('scroll',()=>{
-            let scrTop = window.scrollY;
-            bgChange(scrTop,headerEl);
+        window.addEventListener('scroll',function(){
+            let hEl = document.querySelector('.header');
+            if(window.scrollY>10){
+                myObj.lock(hEl);
+            }else{
+                myObj.unlock(hEl);
+            }
         })
 
+        // 마우스무브 이벤트
+        window.addEventListener('mousemove',function(viewPage){
+            let mouseX = viewPage.clientX;
+            let mouseY = viewPage.clientY;
+            let msCursor = document.getElementById('msCursor')
+            console.log('x = ' + mouseX);
+            console.log('y = ' + mouseY);
+            msCursor.style.left = mouseX + 'px';
+            msCursor.style.top = mouseY + 'px';
+        })
 
-
+       
         // FUNCTION
-            // 팝업 보이기/감추기 함수
-            function popup(){
-                if(getCookie('mainPopup')!=='hidden'){
-                    popupEl.classList.remove('dis-none');
-                }
+        function winWidth(){
+            window.innerWidth;
+        }            
+        
+        
+        // 팝업 보이기/감추기 함수
+        function popup(){
+            if(getCookie('mainPopup')!=='hidden'){
+                popupEl.classList.remove('dis-none');
             }
-            // set 쿠키만들기 함수
-            function setCookie(name,value,expir){
-                let date = new Date();
-                date.setDate(date.getDate() + expir);
-                document.cookie = name + '=' + value + ';expires=' + date +';path=/;';
-            }
-            // get 쿠키만들기 함수
-            function getCookie(name) { 
+        }
+        // set 쿠키만들기 함수
+        function setCookie(name,value,expir){
+            let date = new Date();
+            date.setDate(date.getDate() + expir);
+            document.cookie = name + '=' + value + ';expires=' + date +';path=/;';
+        }
+        // get 쿠키만들기 함수
+        function getCookie(name) { 
                 let value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
                 return value? value[2] : null;
             }
+                        
             
-            // target 토글 함수
-            function showNav(target){
-                target.classList.toggle('active');
-            }
-           
-            // 배경 변경 함수
-            function bgChange(scrWidth,target){
-                if(scrWidth>0){
-                    target.classList.add('lock');
-                }else{
-                    target.classList.remove('lock');
-                }
-            }
-    
 
 
 
-            // let intLeftEl = document.querySelector('.intro-left');
-            // intLeftEl.style.transform = 'translateY(200px)';
-            // intLeftEl.style.opacity = '0';
-            // intLeftEl.style.transition='2s';
-            // window.onscroll=function(){
-            //     let winTop = window.scrollY;
-            //     if(winTop>=50){
-            //         intLeftEl.style.transform = 'translateY(0)';
-            //         intLeftEl.style.opacity = '1';
-            //     }
-            // }
+            
+            
     </script>
 </body>
 </html>

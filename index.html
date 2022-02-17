@@ -19,6 +19,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
         /* 마우스포인터 */
         .mouse-cursor{
+            display:none;
             position:fixed;
             transform:translate(-50%,-50%);
             z-index:9995;
@@ -37,17 +38,8 @@
             font-weight:400;
             font-size:14px;
             color:#fff;
-            line-height:1;
-            cursor:none;
-        } 
-            /* 나중에 지울것 */
-                        .mouse-cursor{
-                            display:none;
-                        }
-                        :root{
-                            cursor:initial;
-                        }
-            /* 나중에 지울것 */
+            line-height:1;            
+        }             
 
         .wrapper{
             width:100%;
@@ -675,6 +667,9 @@
 
         /* contact 시직 */
         
+        .contact{
+            padding-bottom:120px;
+        }
         .contact h2{
             margin-bottom:50px;
             font-size: 2em;
@@ -702,16 +697,34 @@
             font-size:1.6em;
             line-height:1.2;            
         }
-
         /* contact 시직끝 */
 
-
-
-
-
         footer{
-            margin-bottom:500px;
+            display:none;
+            padding:40px 0;  
+            border-top:2px solid #fff;
+            background-color:#333; 
         }
+        address{
+            font-size:2em;
+            text-transform:uppercase;
+            text-align:center;
+        }
+        .page-bottom{
+            position:fixed;
+            left:0;
+            right:0;
+            bottom:0;
+            z-index:9997;
+            background-color:#000;
+            padding:20px 0;
+        }
+        .page-bottom ul{
+            display: grid;
+            grid-template-columns:repeat(4,1fr);
+            text-align:center;
+        }
+
 
 
         @media (min-width:560px){
@@ -822,7 +835,12 @@
 
         @media (min-width:1200px){
             /* 공통스타일 */
-           
+            .mouse-cursor{
+                display:block;
+            }
+            :root{
+                cursor:none;
+            }
             /* 공통스타일 */
 
             /* 헤더스타일 */
@@ -927,6 +945,15 @@
             }
             /* 스킬스타일끝 */
 
+            .contact{
+                padding-bottom:50px;
+            }
+            footer{
+                display:block;
+            }
+            .page-bottom{
+                display:none;
+            }
         }
 
         @media (min-width:1440px){
@@ -966,8 +993,8 @@
         </div>
     </section>
 
-    <section class="wrapper">
-        <header class="header" id="home">
+    <section class="wrapper" id="home">
+        <header class="header">
             <div class="container">
                 <div class="in">
                     <h1><a href="./index.html" title="클릭하면 시작페이지로 이동">cho hwanjoon</a></h1>
@@ -1282,17 +1309,17 @@
         </section>
         <section class="sec contact" id="contact">
             <div class="container">
-                <h2>contact</h2>
+                <h2 data-aos="fade-left">contact</h2>
                 <div class="in">
-                    <div class="contact-box phone">
+                    <div class="contact-box phone" data-aos="flip-left">
                         <h3>Phone</h3>
                         <p>010-1111-2222</p>
                     </div>
-                    <div class="contact-box e-mail">
+                    <div class="contact-box e-mail"  data-aos="flip-up">
                         <h3>E-mail</h3>
                         <p>pam000@naver.com</p>
                     </div>
-                    <div class="contact-box address">
+                    <div class="contact-box address" data-aos="flip-right">
                         <h3>Address</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, totam?</p>
                     </div>
@@ -1301,9 +1328,31 @@
         </section>
         <footer class="footer">
             <div class="container">
-                <h2>footer</h2>
+                <address>
+                    copyright : cho
+                </address>
             </div>
-        </footer>
+        </footer>        
+    </section>
+    <section class="page-bottom">
+        <div class="container">
+            <div class="in">
+                <ul>
+                    <li>
+                        <a href="#home">home</a>
+                    </li>
+                    <li>
+                        <a href="#about">about</a>
+                    </li>
+                    <li>
+                        <a href="#skills">skill</a>
+                    </li>
+                    <li>
+                        <a href="#projects">project</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </section>
     <div class="mouse-cursor" id="msCursor"></div>
     
